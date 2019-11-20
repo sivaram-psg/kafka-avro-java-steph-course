@@ -3,7 +3,7 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package com.example;
+package com.sivaram.kafkaavrov1;
 
 import org.apache.avro.specific.SpecificData;
 import org.apache.avro.message.BinaryMessageEncoder;
@@ -12,23 +12,23 @@ import org.apache.avro.message.SchemaStore;
 
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
-public class CustomerV1 extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 4904696009977982300L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"CustomerV1\",\"namespace\":\"com.example\",\"fields\":[{\"name\":\"first_name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"doc\":\"First Name of Customer\"},{\"name\":\"last_name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"doc\":\"Last Name of Customer\"},{\"name\":\"age\",\"type\":\"int\",\"doc\":\"Age at the time of registration\"},{\"name\":\"height\",\"type\":\"float\",\"doc\":\"Height at the time of registration in cm\"},{\"name\":\"weight\",\"type\":\"float\",\"doc\":\"Weight at the time of registration in kg\"},{\"name\":\"automated_email\",\"type\":\"boolean\",\"doc\":\"Field indicating if the user is enrolled in marketing emails\",\"default\":true}]}");
+public class Customer extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
+  private static final long serialVersionUID = 3473379635942349359L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Customer\",\"namespace\":\"com.sivaram.kafkaavrov1\",\"fields\":[{\"name\":\"first_name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"doc\":\"First Name of Customer\"},{\"name\":\"last_name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"doc\":\"Last Name of Customer\"},{\"name\":\"age\",\"type\":\"int\",\"doc\":\"Age at the time of registration\"},{\"name\":\"height\",\"type\":\"float\",\"doc\":\"Height at the time of registration in cm\"},{\"name\":\"weight\",\"type\":\"float\",\"doc\":\"Weight at the time of registration in kg\"},{\"name\":\"phone_number\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"doc\":\"Phone number\",\"default\":\"unknown\"},{\"name\":\"email\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"doc\":\"email address of the user\",\"default\":\"abc@unknown.com\"}],\"version\":\"2\"}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
 
-  private static final BinaryMessageEncoder<CustomerV1> ENCODER =
-      new BinaryMessageEncoder<CustomerV1>(MODEL$, SCHEMA$);
+  private static final BinaryMessageEncoder<Customer> ENCODER =
+      new BinaryMessageEncoder<Customer>(MODEL$, SCHEMA$);
 
-  private static final BinaryMessageDecoder<CustomerV1> DECODER =
-      new BinaryMessageDecoder<CustomerV1>(MODEL$, SCHEMA$);
+  private static final BinaryMessageDecoder<Customer> DECODER =
+      new BinaryMessageDecoder<Customer>(MODEL$, SCHEMA$);
 
   /**
    * Return the BinaryMessageDecoder instance used by this class.
    */
-  public static BinaryMessageDecoder<CustomerV1> getDecoder() {
+  public static BinaryMessageDecoder<Customer> getDecoder() {
     return DECODER;
   }
 
@@ -36,17 +36,17 @@ public class CustomerV1 extends org.apache.avro.specific.SpecificRecordBase impl
    * Create a new BinaryMessageDecoder instance for this class that uses the specified {@link SchemaStore}.
    * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
    */
-  public static BinaryMessageDecoder<CustomerV1> createDecoder(SchemaStore resolver) {
-    return new BinaryMessageDecoder<CustomerV1>(MODEL$, SCHEMA$, resolver);
+  public static BinaryMessageDecoder<Customer> createDecoder(SchemaStore resolver) {
+    return new BinaryMessageDecoder<Customer>(MODEL$, SCHEMA$, resolver);
   }
 
-  /** Serializes this CustomerV1 to a ByteBuffer. */
+  /** Serializes this Customer to a ByteBuffer. */
   public java.nio.ByteBuffer toByteBuffer() throws java.io.IOException {
     return ENCODER.encode(this);
   }
 
-  /** Deserializes a CustomerV1 from a ByteBuffer. */
-  public static CustomerV1 fromByteBuffer(
+  /** Deserializes a Customer from a ByteBuffer. */
+  public static Customer fromByteBuffer(
       java.nio.ByteBuffer b) throws java.io.IOException {
     return DECODER.decode(b);
   }
@@ -61,15 +61,17 @@ public class CustomerV1 extends org.apache.avro.specific.SpecificRecordBase impl
    private float height;
   /** Weight at the time of registration in kg */
    private float weight;
-  /** Field indicating if the user is enrolled in marketing emails */
-   private boolean automated_email;
+  /** Phone number */
+   private java.lang.String phone_number;
+  /** email address of the user */
+   private java.lang.String email;
 
   /**
    * Default constructor.  Note that this does not initialize fields
    * to their default values from the schema.  If that is desired then
    * one should use <code>newBuilder()</code>.
    */
-  public CustomerV1() {}
+  public Customer() {}
 
   /**
    * All-args constructor.
@@ -78,15 +80,17 @@ public class CustomerV1 extends org.apache.avro.specific.SpecificRecordBase impl
    * @param age Age at the time of registration
    * @param height Height at the time of registration in cm
    * @param weight Weight at the time of registration in kg
-   * @param automated_email Field indicating if the user is enrolled in marketing emails
+   * @param phone_number Phone number
+   * @param email email address of the user
    */
-  public CustomerV1(java.lang.String first_name, java.lang.String last_name, java.lang.Integer age, java.lang.Float height, java.lang.Float weight, java.lang.Boolean automated_email) {
+  public Customer(java.lang.String first_name, java.lang.String last_name, java.lang.Integer age, java.lang.Float height, java.lang.Float weight, java.lang.String phone_number, java.lang.String email) {
     this.first_name = first_name;
     this.last_name = last_name;
     this.age = age;
     this.height = height;
     this.weight = weight;
-    this.automated_email = automated_email;
+    this.phone_number = phone_number;
+    this.email = email;
   }
 
   public org.apache.avro.Schema getSchema() { return SCHEMA$; }
@@ -98,7 +102,8 @@ public class CustomerV1 extends org.apache.avro.specific.SpecificRecordBase impl
     case 2: return age;
     case 3: return height;
     case 4: return weight;
-    case 5: return automated_email;
+    case 5: return phone_number;
+    case 6: return email;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -112,7 +117,8 @@ public class CustomerV1 extends org.apache.avro.specific.SpecificRecordBase impl
     case 2: age = (java.lang.Integer)value$; break;
     case 3: height = (java.lang.Float)value$; break;
     case 4: weight = (java.lang.Float)value$; break;
-    case 5: automated_email = (java.lang.Boolean)value$; break;
+    case 5: phone_number = (java.lang.String)value$; break;
+    case 6: email = (java.lang.String)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -163,45 +169,54 @@ public class CustomerV1 extends org.apache.avro.specific.SpecificRecordBase impl
 
 
   /**
-   * Gets the value of the 'automated_email' field.
-   * @return Field indicating if the user is enrolled in marketing emails
+   * Gets the value of the 'phone_number' field.
+   * @return Phone number
    */
-  public java.lang.Boolean getAutomatedEmail() {
-    return automated_email;
+  public java.lang.String getPhoneNumber() {
+    return phone_number;
   }
 
 
   /**
-   * Creates a new CustomerV1 RecordBuilder.
-   * @return A new CustomerV1 RecordBuilder
+   * Gets the value of the 'email' field.
+   * @return email address of the user
    */
-  public static com.example.CustomerV1.Builder newBuilder() {
-    return new com.example.CustomerV1.Builder();
+  public java.lang.String getEmail() {
+    return email;
+  }
+
+
+  /**
+   * Creates a new Customer RecordBuilder.
+   * @return A new Customer RecordBuilder
+   */
+  public static com.sivaram.kafkaavrov1.Customer.Builder newBuilder() {
+    return new com.sivaram.kafkaavrov1.Customer.Builder();
   }
 
   /**
-   * Creates a new CustomerV1 RecordBuilder by copying an existing Builder.
+   * Creates a new Customer RecordBuilder by copying an existing Builder.
    * @param other The existing builder to copy.
-   * @return A new CustomerV1 RecordBuilder
+   * @return A new Customer RecordBuilder
    */
-  public static com.example.CustomerV1.Builder newBuilder(com.example.CustomerV1.Builder other) {
-    return new com.example.CustomerV1.Builder(other);
+  public static com.sivaram.kafkaavrov1.Customer.Builder newBuilder(com.sivaram.kafkaavrov1.Customer.Builder other) {
+    return new com.sivaram.kafkaavrov1.Customer.Builder(other);
   }
 
   /**
-   * Creates a new CustomerV1 RecordBuilder by copying an existing CustomerV1 instance.
+   * Creates a new Customer RecordBuilder by copying an existing Customer instance.
    * @param other The existing instance to copy.
-   * @return A new CustomerV1 RecordBuilder
+   * @return A new Customer RecordBuilder
    */
-  public static com.example.CustomerV1.Builder newBuilder(com.example.CustomerV1 other) {
-    return new com.example.CustomerV1.Builder(other);
+  public static com.sivaram.kafkaavrov1.Customer.Builder newBuilder(com.sivaram.kafkaavrov1.Customer other) {
+    return new com.sivaram.kafkaavrov1.Customer.Builder(other);
   }
 
   /**
-   * RecordBuilder for CustomerV1 instances.
+   * RecordBuilder for Customer instances.
    */
-  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<CustomerV1>
-    implements org.apache.avro.data.RecordBuilder<CustomerV1> {
+  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Customer>
+    implements org.apache.avro.data.RecordBuilder<Customer> {
 
     /** First Name of Customer */
     private java.lang.String first_name;
@@ -213,8 +228,10 @@ public class CustomerV1 extends org.apache.avro.specific.SpecificRecordBase impl
     private float height;
     /** Weight at the time of registration in kg */
     private float weight;
-    /** Field indicating if the user is enrolled in marketing emails */
-    private boolean automated_email;
+    /** Phone number */
+    private java.lang.String phone_number;
+    /** email address of the user */
+    private java.lang.String email;
 
     /** Creates a new Builder */
     private Builder() {
@@ -225,7 +242,7 @@ public class CustomerV1 extends org.apache.avro.specific.SpecificRecordBase impl
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(com.example.CustomerV1.Builder other) {
+    private Builder(com.sivaram.kafkaavrov1.Customer.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.first_name)) {
         this.first_name = data().deepCopy(fields()[0].schema(), other.first_name);
@@ -247,17 +264,21 @@ public class CustomerV1 extends org.apache.avro.specific.SpecificRecordBase impl
         this.weight = data().deepCopy(fields()[4].schema(), other.weight);
         fieldSetFlags()[4] = true;
       }
-      if (isValidValue(fields()[5], other.automated_email)) {
-        this.automated_email = data().deepCopy(fields()[5].schema(), other.automated_email);
+      if (isValidValue(fields()[5], other.phone_number)) {
+        this.phone_number = data().deepCopy(fields()[5].schema(), other.phone_number);
         fieldSetFlags()[5] = true;
+      }
+      if (isValidValue(fields()[6], other.email)) {
+        this.email = data().deepCopy(fields()[6].schema(), other.email);
+        fieldSetFlags()[6] = true;
       }
     }
 
     /**
-     * Creates a Builder by copying an existing CustomerV1 instance
+     * Creates a Builder by copying an existing Customer instance
      * @param other The existing instance to copy.
      */
-    private Builder(com.example.CustomerV1 other) {
+    private Builder(com.sivaram.kafkaavrov1.Customer other) {
             super(SCHEMA$);
       if (isValidValue(fields()[0], other.first_name)) {
         this.first_name = data().deepCopy(fields()[0].schema(), other.first_name);
@@ -279,9 +300,13 @@ public class CustomerV1 extends org.apache.avro.specific.SpecificRecordBase impl
         this.weight = data().deepCopy(fields()[4].schema(), other.weight);
         fieldSetFlags()[4] = true;
       }
-      if (isValidValue(fields()[5], other.automated_email)) {
-        this.automated_email = data().deepCopy(fields()[5].schema(), other.automated_email);
+      if (isValidValue(fields()[5], other.phone_number)) {
+        this.phone_number = data().deepCopy(fields()[5].schema(), other.phone_number);
         fieldSetFlags()[5] = true;
+      }
+      if (isValidValue(fields()[6], other.email)) {
+        this.email = data().deepCopy(fields()[6].schema(), other.email);
+        fieldSetFlags()[6] = true;
       }
     }
 
@@ -300,7 +325,7 @@ public class CustomerV1 extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'first_name'.
       * @return This builder.
       */
-    public com.example.CustomerV1.Builder setFirstName(java.lang.String value) {
+    public com.sivaram.kafkaavrov1.Customer.Builder setFirstName(java.lang.String value) {
       validate(fields()[0], value);
       this.first_name = value;
       fieldSetFlags()[0] = true;
@@ -322,7 +347,7 @@ public class CustomerV1 extends org.apache.avro.specific.SpecificRecordBase impl
       * First Name of Customer
       * @return This builder.
       */
-    public com.example.CustomerV1.Builder clearFirstName() {
+    public com.sivaram.kafkaavrov1.Customer.Builder clearFirstName() {
       first_name = null;
       fieldSetFlags()[0] = false;
       return this;
@@ -343,7 +368,7 @@ public class CustomerV1 extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'last_name'.
       * @return This builder.
       */
-    public com.example.CustomerV1.Builder setLastName(java.lang.String value) {
+    public com.sivaram.kafkaavrov1.Customer.Builder setLastName(java.lang.String value) {
       validate(fields()[1], value);
       this.last_name = value;
       fieldSetFlags()[1] = true;
@@ -365,7 +390,7 @@ public class CustomerV1 extends org.apache.avro.specific.SpecificRecordBase impl
       * Last Name of Customer
       * @return This builder.
       */
-    public com.example.CustomerV1.Builder clearLastName() {
+    public com.sivaram.kafkaavrov1.Customer.Builder clearLastName() {
       last_name = null;
       fieldSetFlags()[1] = false;
       return this;
@@ -386,7 +411,7 @@ public class CustomerV1 extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'age'.
       * @return This builder.
       */
-    public com.example.CustomerV1.Builder setAge(int value) {
+    public com.sivaram.kafkaavrov1.Customer.Builder setAge(int value) {
       validate(fields()[2], value);
       this.age = value;
       fieldSetFlags()[2] = true;
@@ -408,7 +433,7 @@ public class CustomerV1 extends org.apache.avro.specific.SpecificRecordBase impl
       * Age at the time of registration
       * @return This builder.
       */
-    public com.example.CustomerV1.Builder clearAge() {
+    public com.sivaram.kafkaavrov1.Customer.Builder clearAge() {
       fieldSetFlags()[2] = false;
       return this;
     }
@@ -428,7 +453,7 @@ public class CustomerV1 extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'height'.
       * @return This builder.
       */
-    public com.example.CustomerV1.Builder setHeight(float value) {
+    public com.sivaram.kafkaavrov1.Customer.Builder setHeight(float value) {
       validate(fields()[3], value);
       this.height = value;
       fieldSetFlags()[3] = true;
@@ -450,7 +475,7 @@ public class CustomerV1 extends org.apache.avro.specific.SpecificRecordBase impl
       * Height at the time of registration in cm
       * @return This builder.
       */
-    public com.example.CustomerV1.Builder clearHeight() {
+    public com.sivaram.kafkaavrov1.Customer.Builder clearHeight() {
       fieldSetFlags()[3] = false;
       return this;
     }
@@ -470,7 +495,7 @@ public class CustomerV1 extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'weight'.
       * @return This builder.
       */
-    public com.example.CustomerV1.Builder setWeight(float value) {
+    public com.sivaram.kafkaavrov1.Customer.Builder setWeight(float value) {
       validate(fields()[4], value);
       this.weight = value;
       fieldSetFlags()[4] = true;
@@ -492,64 +517,109 @@ public class CustomerV1 extends org.apache.avro.specific.SpecificRecordBase impl
       * Weight at the time of registration in kg
       * @return This builder.
       */
-    public com.example.CustomerV1.Builder clearWeight() {
+    public com.sivaram.kafkaavrov1.Customer.Builder clearWeight() {
       fieldSetFlags()[4] = false;
       return this;
     }
 
     /**
-      * Gets the value of the 'automated_email' field.
-      * Field indicating if the user is enrolled in marketing emails
+      * Gets the value of the 'phone_number' field.
+      * Phone number
       * @return The value.
       */
-    public java.lang.Boolean getAutomatedEmail() {
-      return automated_email;
+    public java.lang.String getPhoneNumber() {
+      return phone_number;
     }
 
     /**
-      * Sets the value of the 'automated_email' field.
-      * Field indicating if the user is enrolled in marketing emails
-      * @param value The value of 'automated_email'.
+      * Sets the value of the 'phone_number' field.
+      * Phone number
+      * @param value The value of 'phone_number'.
       * @return This builder.
       */
-    public com.example.CustomerV1.Builder setAutomatedEmail(boolean value) {
+    public com.sivaram.kafkaavrov1.Customer.Builder setPhoneNumber(java.lang.String value) {
       validate(fields()[5], value);
-      this.automated_email = value;
+      this.phone_number = value;
       fieldSetFlags()[5] = true;
       return this;
     }
 
     /**
-      * Checks whether the 'automated_email' field has been set.
-      * Field indicating if the user is enrolled in marketing emails
-      * @return True if the 'automated_email' field has been set, false otherwise.
+      * Checks whether the 'phone_number' field has been set.
+      * Phone number
+      * @return True if the 'phone_number' field has been set, false otherwise.
       */
-    public boolean hasAutomatedEmail() {
+    public boolean hasPhoneNumber() {
       return fieldSetFlags()[5];
     }
 
 
     /**
-      * Clears the value of the 'automated_email' field.
-      * Field indicating if the user is enrolled in marketing emails
+      * Clears the value of the 'phone_number' field.
+      * Phone number
       * @return This builder.
       */
-    public com.example.CustomerV1.Builder clearAutomatedEmail() {
+    public com.sivaram.kafkaavrov1.Customer.Builder clearPhoneNumber() {
+      phone_number = null;
       fieldSetFlags()[5] = false;
+      return this;
+    }
+
+    /**
+      * Gets the value of the 'email' field.
+      * email address of the user
+      * @return The value.
+      */
+    public java.lang.String getEmail() {
+      return email;
+    }
+
+    /**
+      * Sets the value of the 'email' field.
+      * email address of the user
+      * @param value The value of 'email'.
+      * @return This builder.
+      */
+    public com.sivaram.kafkaavrov1.Customer.Builder setEmail(java.lang.String value) {
+      validate(fields()[6], value);
+      this.email = value;
+      fieldSetFlags()[6] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'email' field has been set.
+      * email address of the user
+      * @return True if the 'email' field has been set, false otherwise.
+      */
+    public boolean hasEmail() {
+      return fieldSetFlags()[6];
+    }
+
+
+    /**
+      * Clears the value of the 'email' field.
+      * email address of the user
+      * @return This builder.
+      */
+    public com.sivaram.kafkaavrov1.Customer.Builder clearEmail() {
+      email = null;
+      fieldSetFlags()[6] = false;
       return this;
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public CustomerV1 build() {
+    public Customer build() {
       try {
-        CustomerV1 record = new CustomerV1();
+        Customer record = new Customer();
         record.first_name = fieldSetFlags()[0] ? this.first_name : (java.lang.String) defaultValue(fields()[0]);
         record.last_name = fieldSetFlags()[1] ? this.last_name : (java.lang.String) defaultValue(fields()[1]);
         record.age = fieldSetFlags()[2] ? this.age : (java.lang.Integer) defaultValue(fields()[2]);
         record.height = fieldSetFlags()[3] ? this.height : (java.lang.Float) defaultValue(fields()[3]);
         record.weight = fieldSetFlags()[4] ? this.weight : (java.lang.Float) defaultValue(fields()[4]);
-        record.automated_email = fieldSetFlags()[5] ? this.automated_email : (java.lang.Boolean) defaultValue(fields()[5]);
+        record.phone_number = fieldSetFlags()[5] ? this.phone_number : (java.lang.String) defaultValue(fields()[5]);
+        record.email = fieldSetFlags()[6] ? this.email : (java.lang.String) defaultValue(fields()[6]);
         return record;
       } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);
@@ -558,8 +628,8 @@ public class CustomerV1 extends org.apache.avro.specific.SpecificRecordBase impl
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumWriter<CustomerV1>
-    WRITER$ = (org.apache.avro.io.DatumWriter<CustomerV1>)MODEL$.createDatumWriter(SCHEMA$);
+  private static final org.apache.avro.io.DatumWriter<Customer>
+    WRITER$ = (org.apache.avro.io.DatumWriter<Customer>)MODEL$.createDatumWriter(SCHEMA$);
 
   @Override public void writeExternal(java.io.ObjectOutput out)
     throws java.io.IOException {
@@ -567,8 +637,8 @@ public class CustomerV1 extends org.apache.avro.specific.SpecificRecordBase impl
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumReader<CustomerV1>
-    READER$ = (org.apache.avro.io.DatumReader<CustomerV1>)MODEL$.createDatumReader(SCHEMA$);
+  private static final org.apache.avro.io.DatumReader<Customer>
+    READER$ = (org.apache.avro.io.DatumReader<Customer>)MODEL$.createDatumReader(SCHEMA$);
 
   @Override public void readExternal(java.io.ObjectInput in)
     throws java.io.IOException {
